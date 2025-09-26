@@ -18,7 +18,7 @@ on:
 
 jobs:
   terraform-destroy:
-    uses: your-org/reusable-workflows/.github/workflows/terraform-destroy.yml@main
+    uses: egazzaneo/reusable-workflows/.github/workflows/terraform-destroy.yml@main
     with:
       action: ${{ github.event.inputs.action }}
       target: ${{ github.event.inputs.target }}

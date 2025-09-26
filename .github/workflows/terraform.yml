@@ -22,7 +22,7 @@ on:
 
 jobs:
   terraform:
-    uses: your-org/reusable-workflows/.github/workflows/terraform-pipeline.yml@main
+    uses: egazzaneo/reusable-workflows/.github/workflows/terraform-pipeline.yml@main
     with:
       action: ${{ github.event.inputs.action || 'plan' }}
       target: ${{ github.event.inputs.target }}
