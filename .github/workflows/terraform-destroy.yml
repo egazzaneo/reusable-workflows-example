@@ -1,0 +1,28 @@
+name: 'Terraform Destroy'
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Destroy action to perform'
+        required: true
+        default: 'destroy-plan'
+        type: choice
+        options:
+        - destroy-plan
+        - destroy
+      target:
+        description: 'Target to destroy (leave empty for all)'
+        required: false
+        type: string
+
+jobs:
+  terraform-destroy:
+    uses: your-org/reusable-workflows/.github/workflows/terraform-destroy.yml@main
+    with:
+      action: ${{ github.event.inputs.action }}
+      target: ${{ github.event.inputs.target }}
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: ${{ vars.AWS_REGION }}
